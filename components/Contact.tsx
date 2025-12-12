@@ -7,8 +7,9 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ content }) => {
-  // Replace with your own static form endpoint (Formspree/Basin/etc.) before deploying to GitHub Pages.
-  const formAction = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
+  // Static, no-backend email forwarding via formsubmit.co (free tier).
+  // First submission will ask you to confirm the email address.
+  const formAction = 'https://formsubmit.co/kristinazhi97@gmail.com';
 
   return (
     <section id="contact" className="py-24 px-6 bg-[#FDFBF7] relative">
@@ -27,6 +28,10 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
             action={formAction} 
             method="POST"
         >
+          {/* FormSubmit extras */}
+          <input type="hidden" name="_subject" value="New inquiry from AI Albania site" />
+          <input type="hidden" name="_captcha" value="false" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-xs font-bold text-neutral-500 uppercase tracking-wider">{content.form.name}</label>
